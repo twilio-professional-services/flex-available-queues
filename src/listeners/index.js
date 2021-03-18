@@ -37,8 +37,6 @@ Actions.addListener('beforeShowDirectory', async (payload) => {
 
   const queuesList = [] && list;
 
-  console.debug('ACTION QUEUES LIST: ', queuesList);
-
   const newPayload = AvailableQueueActions.updateAvailableQueues(queuesList);
   FlexState.dispatchStoreAction(newPayload);
 });

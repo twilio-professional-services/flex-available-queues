@@ -16,46 +16,6 @@ import {
 } from './CustomDirectoryComponents';
 
 class CustomDirectory extends React.Component {
-  state = {
-    searchTerm: '',
-  };
-
-  /**
-   * Returns a list of workers from this component's State, filtered through
-   * the entered search term and the `skipWorkerIf` funciton from props
-   */
-  filteredDirectory() {
-    if (!this.state.directoryEntries) {
-      return [];
-    }
-    const { searchTerm } = this.state;
-    return this.state.directoryEntries
-      .filter((worker) => {
-        if (this.props.skipWorkerIf && this.props.skipWorkerIf(worker)) {
-          return false;
-        }
-        if (!searchTerm) {
-          return true;
-        }
-        return worker.name.toLowerCase().includes(searchTerm.toLowerCase());
-      })
-      .sort((a, b) => {
-        let a_name = a.attributes.full_name || a.attributes.friendlyName;
-        let b_name = b.attributes.full_name || b.attributes.friendlyName;
-        return a_name > b_name ? 1 : -1;
-      });
-  }
-
-  /**
-   * Listener function for changes in the Search field. Updates this component's
-   * State with the input search term
-   *
-   * @param {Event} e - the change event
-   */
-  onSearchInputChange(e) {
-    this.setState({ searchTerm: e.target.value });
-  }
-
   /**
    * Listener function for Transfer Button clicks. Handles both warm and cold
    * transfers via the `options` parameter. For more, see:
@@ -66,9 +26,9 @@ class CustomDirectory extends React.Component {
    * @param {object} options - A dictionary object send to the "TransferTask" Action as defined by the TaskRouter SDK
    */
   onTransferClick(queue, options) {
-    console.debug('Transfer clicked');
-    console.debug('Transfer queue:', queue);
-    console.debug('Transfer options:', options);
+    // console.debug('Transfer clicked');
+    // console.debug('Transfer queue:', queue);
+    // console.debug('Transfer options:', options);
 
     this.props.invokeTransfer({
       task: queue.task,
@@ -81,25 +41,14 @@ class CustomDirectory extends React.Component {
    * Render function
    */
   render() {
-    console.debug(this.props.task);
-    console.debug(this.props);
-
     return (
       <TabContainer key="custom-directory-container">
-        <InputContainer key="custom-directory-input-container">
-          <StyledInput
-            key="custom-directory-input-field"
-            onChange={this.onSearchInputChange}
-            placeholder={templates.WorkerDirectorySearchPlaceholder()}
-          />
-        </InputContainer>
         <ItemContainer
           key="custom-directory-item-container"
           className="Twilio-WorkerDirectory-Queue"
           vertical
         >
           {this.props.queuesList.map((item) => {
-            console.debug(item);
             return (
               <DirectoryItem
                 item={item}

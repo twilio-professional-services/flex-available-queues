@@ -17,7 +17,6 @@ class DirectoryItem extends React.Component {
   };
 
   render() {
-    console.debug('🍕🍕🍕🍕', this.props);
     return (
       <ItemInnerContainer
         className="Twilio-WorkerDirectory-QueueAvatar"
