@@ -2,8 +2,12 @@ import React from 'react';
 import { VERSION } from '@twilio/flex-ui';
 import { FlexPlugin } from 'flex-plugin';
 
-import CustomTaskListContainer from './components/CustomTaskList/CustomTaskList.Container';
-import reducers, { namespace } from './states';
+import availableQueuesReducers, {
+  namespace as availableQueuesNamespace,
+} from './states/AvailableQueuesListState';
+import './listeners';
+//import AvailableQueuesList from './components/AvailableQueuesList';
+import CustomDirectory from './components/CustomDirectory';
 
 const PLUGIN_NAME = 'TaskQueueAgentAvailabilityPlugin';
 
@@ -21,12 +25,19 @@ export default class TaskQueueAgentAvailabilityPlugin extends FlexPlugin {
    */
   init(flex, manager) {
     this.registerReducers(manager);
-
-    const options = { sortOrder: -1 };
-    flex.AgentDesktopView
-      .Panel1
-      .Content
-      .add(<CustomTaskListContainer key="TaskQueueAgentAvailabilityPlugin-component" />, options);
+    // Remove Queues tab
+    flex.WorkerDirectory.Tabs.Content.remove('queues');
+    // Add new Queues tab
+    flex.WorkerDirectory.Tabs.Content.add(
+      <flex.Tab key="custom-directory" label="Queues">
+        <CustomDirectory
+          invokeTransfer={(params) => {
+            flex.Actions.invokeAction('TransferTask', params);
+            flex.Actions.invokeAction('HideDirectory');
+          }}
+        />
+      </flex.Tab>
+    );
   }
 
   /**
@@ -37,10 +48,12 @@ export default class TaskQueueAgentAvailabilityPlugin extends FlexPlugin {
   registerReducers(manager) {
     if (!manager.store.addReducer) {
       // eslint: disable-next-line
-      console.error(`You need FlexUI > 1.9.0 to use built-in redux; you are currently on ${VERSION}`);
+      console.error(
+        `You need FlexUI > 1.9.0 to use built-in redux; you are currently on ${VERSION}`
+      );
       return;
     }
 
-    manager.store.addReducer(namespace, reducers);
+    manager.store.addReducer(availableQueuesNamespace, availableQueuesReducers);
   }
 }

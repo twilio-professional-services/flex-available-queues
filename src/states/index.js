@@ -1,11 +1,10 @@
 import { combineReducers } from 'redux';
-
-import { reduce as CustomTaskListReducer } from './CustomTaskListState';
+import AvailableQueuesReducer from './AvailableQueuesListState';
 
 // Register your redux store under a unique namespace
-export const namespace = 'taskqueue-agent-availability';
+export const namespaceAvailableQueues = 'availableQueues';
 
 // Combine the reducers
 export default combineReducers({
-  customTaskList: CustomTaskListReducer
+  availableQueues: AvailableQueuesReducer,
 });
