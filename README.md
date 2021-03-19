@@ -38,6 +38,9 @@ Once downloaded to your local environment CD into the root of the code and run `
 
 ### 3. Make sure you have installed the Twilio CLI and Flex CLI Plugin extension
 
+- [Install Twilio CLI](https://www.twilio.com/docs/twilio-cli/quickstart#install-twilio-cli)
+- [Install Twilio CLI Flex Plugin](https://www.twilio.com/docs/twilio-cli/plugins)
+
 ## How to Run This Code Locally
 
 Using the Twilio CLI make sure you have CD'd into the root of this code directory. Start the code by running the following:
