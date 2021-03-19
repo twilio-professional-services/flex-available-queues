@@ -63,20 +63,11 @@ class CustomDirectory extends React.Component {
   }
 }
 const mapStateToProps = (state) => {
-  const queuesList = state.availableQueues.list.queuesList;
+  const queuesList = state?.availableQueues?.list?.queuesList;
 
   return {
     queuesList: Array.isArray(queuesList) ? queuesList : [],
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    updateAvailableQueuesList: bindActionCreators(
-      AvailableQueuesActions.updateAvailableQueues,
-      dispatch
-    ),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(CustomDirectory);
+export default connect(mapStateToProps)(CustomDirectory);
