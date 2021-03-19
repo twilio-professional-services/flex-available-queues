@@ -7,8 +7,8 @@
   },
   "dependencies": {
     "flex-plugin-scripts": "^4.4.0-nightly.20210226",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
   },
   "devDependencies": {
     "@twilio/flex-ui": "^1"
