@@ -2,7 +2,9 @@
 
 ## What Does This Plugin Do?
 
-sadfsdf
+This plugin was built to help prevent transferring customers to a queue that does not have available agents.
+
+When an agent clicks on the transfer button, this triggers an event that looks at all the queues, determines which queues have available agents, and only returns a list of queues with available agents. The agent transferring the call can now decide to either warm or cold tranfer the call to one of these queeus.
 
 ## Disclaimer
 
