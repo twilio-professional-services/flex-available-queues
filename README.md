@@ -1,3 +1,17 @@
+# Availble Task Queues Plugin
+
+> ## Disclaimer
+>
+> This software is to be considered "sample code", a Type B Deliverable, and is delivered "as-is" to the user. Twilio bears no responsibility to support the use or implementation of this software.
+>
+> ### Plugin Code Developed and Tested On the Following Versions
+>
+> > _Code may not run as expected on higher versions._
+>
+> - _Flex UI: 1.25.2_
+> - _Twilio CLI: 2.19.0_
+> - _Node: 12.21.0_
+
 # Your custom Twilio Flex Plugin
 
 Twilio Flex Plugins allow you to customize the appearance and behavior of [Twilio Flex](https://www.twilio.com/flex). If you want to learn more about the capabilities and how to use the API, check out our [Flex documentation](https://www.twilio.com/docs/flex).
@@ -7,7 +21,7 @@ Twilio Flex Plugins allow you to customize the appearance and behavior of [Twili
 Make sure you have [Node.js](https://nodejs.org) as well as [`npm`](https://npmjs.com). We support Node >= 10.12 (and recommend the _even_ versions of Node). Afterwards, install the dependencies by running `npm install`:
 
 ```bash
-cd 
+cd
 
 # If you use npm
 npm install
@@ -28,4 +42,3 @@ twilio plugins:install @twilio-labs/plugin-flex@beta
 ## Development
 
 Run `twilio flex:plugins --help` to see all the commands we currently support. For further details on Flex Plugins refer to our documentation on the [Twilio Docs](https://www.twilio.com/docs/flex/developer/plugins/cli) page.
-
